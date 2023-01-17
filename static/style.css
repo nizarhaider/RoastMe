@@ -1,0 +1,76 @@
+.comments-container {
+  background: #15213b;
+  border: 2px solid #0051a8;
+  box-shadow: 2px 2px 10px #414141;
+  padding: 20px;
+    }
+.comments-header {
+  font-weight: bold;
+  color: #007bff;
+    }
+pre {
+  display: block;
+  font-size: 87.5%;
+  color: #ffffff;
+  }
+.bg-custom {
+    background-color: #0f172a;
+    margin-bottom: 20px;
+}
+
+.frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.progress {
+    height: 20px;
+    width: 100%;
+    margin: 20px 0;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    }
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #007bff;
+    }
+
+.img-50 {
+    width: 50%;
+    height: 50%;
+    }
+.blinking-cursor {
+    width: 20px;
+    height: 15px;
+    color: #0051a8;
+    background-color: #0051a8;
+    animation: blink 1s linear infinite;
+    }
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+    }
+
+    #progress-label {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #fff;
+        font-size: 14px;
+        font-family: monospace;
+        transition: background-color 0.3s ease;
+
+      }
+      

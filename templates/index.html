@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="static/style.css" rel="stylesheet">
+
+
+    <title>RoastMe</title>
+  </head>
+  <body class="bg-custom text-white">
+    <div class="container">
+      <h1 class="text-center my-5">RoastMe.ai</h1>
+      <div class="row">
+        <div class="col-6">
+          <div class="frame">
+            <img src="" class="img-fluid img-50 hidden" id="user-img">
+          </div>
+        </div>
+        <div class="col-6"> 
+          <div class="frame">
+            <img src="" class="img-fluid img-50 hidden" id="match-img">
+          </div>
+        </div>
+      </div>
+      <div class="my-5">
+      <form method="post" enctype="multipart/form-data" >
+        <div class="form-group">
+          <label for="image" >Upload at your own risk:</label>
+          <input type="file" class="form-control-file" id="image" name="image">
+        </div>
+        <button id="submit-button"  type="submit" class="btn btn-danger ">Submit</button>
+        <div class="progress" style="display: none;">
+          <div class="progress-bar" id="loading-bar"></div>
+      </div>
+      </form>
+      </div>
+      <div class="comments-container" id="comments-container">
+        <div class="comments-header" id="comments-header">
+          <h3>> </h3>
+        </div>
+        <div id="comments-body" >
+          <div id="comments-list">
+            <span class="blinking-cursor">" "</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  <script>
+      var headerFinished = false;
+      var head_text = "pip install roastbot...";
+      var a = 0;
+      var header = $("#comments-header h3");
+      var interval = setInterval(function() {
+        $('.blinking-cursor').remove();
+        header.append(head_text[a]);
+        header.append("<span class='blinking-cursor'>' '</span>");
+        a++;
+        if (a >= head_text.length) {
+          clearInterval(interval);
+          headerFinished = true;
+        }
+      }, 100);
+      
+      var commentsList = $("#comments-list");
+      var prompts = ["Waiting for image upload...", "Too scared to upload?", "Don't worry, I'll be nice. I promise..."];
+      var currentPrompt = 0;
+      
+      setInterval(function() {
+        commentsList.text(prompts[currentPrompt]);
+        currentPrompt++;
+        if (currentPrompt >= prompts.length) {
+              currentPrompt = 0;
+        }
+      }, 5000);
+
+    $("form").submit(function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            url: '/',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+              success: function (data) {  
+                document.getElementById("comments-list").scrollIntoView();  
+                var comments = data.comments;
+                comments = JSON.parse(comments);
+                comments = comments.map(comment => comment.replace("[", "").replace("]", "").replace("\u2019", "'"));
+                var comment_html = "";
+                $("#comments-list").append("<br>"); 
+                function typeComment(i, j) {                      
+                  if (i < comments.length) {                         
+                    if (j < comments[i].length) {
+                      $('.blinking-cursor').remove();
+                      $("#comments-list").append(comments[i][j]);
+                      $("#comments-list").append("<span class='blinking-cursor'>' '</span>");
+                      var delay = Math.floor(Math.random() * 75) + 25;
+                      document.querySelector('.blinking-cursor').style.animationDelay = delay + 'ms';
+                      setTimeout(function () {
+                        typeComment(i, j + 1);
+                      }, delay);
+                    } else {
+                      // $("#comments-list").append("<span class='blinking-cursor'></span>");
+                      $("#comments-list").append("<br>").append("<br>");
+                      setTimeout(function () {
+                        typeComment(i + 1, 0);
+                      }, 500);
+                    }
+                  }
+                }
+                typeComment(0, 0);
+                $("#user-img").attr("src", data.user_img);
+                $("#match-img").attr("src", data.match_img);
+                $('img').removeClass('hidden');
+              },
+                    error: function (data) {
+                console.log("Error: " + data);
+            }
+        });
+    });
+
+  </script>
+</body>
+</html>

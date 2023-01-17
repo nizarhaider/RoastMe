@@ -1,0 +1,11 @@
+pandas 
+Pillow 
+mtcnn 
+facenet_pytorch 
+numpy
+opencv-python
+torch
+tqdm 
+scipy 
+tensorflow 
+google-cloud-storage

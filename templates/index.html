@@ -66,22 +66,41 @@
         header.append("<span class='blinking-cursor'>' '</span>");
         a++;
         if (a >= head_text.length) {
+          $('.blinking-cursor').remove();
           clearInterval(interval);
-          headerFinished = true;
+          startCommentPrinting();
         }
       }, 100);
       
+      function startCommentPrinting() {
       var commentsList = $("#comments-list");
       var prompts = ["Waiting for image upload...", "Too scared to upload?", "Don't worry, I'll be nice. I promise..."];
       var currentPrompt = 0;
-      
-      setInterval(function() {
-        commentsList.text(prompts[currentPrompt]);
-        currentPrompt++;
-        if (currentPrompt >= prompts.length) {
-              currentPrompt = 0;
+      var b = 0;
+      function startPrinting() {
+        if (b === 0) {
+          commentsList.text("");
         }
-      }, 5000);
+        $('.blinking-cursor').remove();
+        commentsList.append(prompts[currentPrompt][b]);
+        commentsList.append("<span class='blinking-cursor'>' '</span>");
+        b++;
+        if (b >= prompts[currentPrompt].length) {
+          clearInterval(interval);
+          currentPrompt++;
+          b = 0;
+          if (currentPrompt >= prompts.length) {
+              currentPrompt = 0;
+          }
+          setTimeout(() => {
+            interval = setInterval(startPrinting, 100);
+          }, 5000);
+        }
+      }
+      interval = setInterval(startPrinting, 100);
+  }
+
+
 
     $("form").submit(function(event) {
         event.preventDefault();

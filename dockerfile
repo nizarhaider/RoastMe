@@ -13,7 +13,7 @@ COPY . ./
 
 # # Copy the current directory contents into the container at /app
 # COPY . /app
-RUN apt install -y libgl1-mesa-glx
+RUN sudo apt-get install libgl1-mesa-glx
 
 
 # Install the required packages

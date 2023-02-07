@@ -12,143 +12,73 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="static/style.css" rel="stylesheet">
-
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
     <title>RoastMe</title>
   </head>
+
   <body class="bg-custom text-white">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">RoastMe</a>  
+      </nav>
+    </header>
+    
+    
     <div class="container">
-      <h1 class="text-center my-5">RoastMe.ai</h1>
       <div class="row">
-        <div class="col-6">
+        <div class="col-4 offset-4">
           <div class="frame">
-            <img src="" class="img-fluid img-50 hidden" id="user-img">
-          </div>
+            <img src="" class="img-fluid" id="user-img">
+          </div>  
         </div>
-        <div class="col-6"> 
+        <!-- <div class="col-6"> 
           <div class="frame">
             <img src="" class="img-fluid img-50 hidden" id="match-img">
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="my-5">
       <form method="post" enctype="multipart/form-data" >
         <div class="form-group">
+          <!-- <label for="image">Upload at your own risk:</label>
+          <input type="file" class="form-control-file" id="image" name="image">
+          <label class="custom-file-upload" for="image">Choose file</label> -->
           <label for="image" >Upload at your own risk:</label>
           <input type="file" class="form-control-file" id="image" name="image">
         </div>
         <button id="submit-button"  type="submit" class="btn btn-danger ">Submit</button>
-        <div class="progress" style="display: none;">
-          <div class="progress-bar" id="loading-bar"></div>
-      </div>
+
       </form>
       </div>
       <div class="comments-container" id="comments-container">
+        <div class="tools">
+          <div class="circle">
+            <span class="red box"></span>
+          </div>
+          <div class="circle">
+            <span class="yellow box"></span>
+          </div>
+          <div class="circle">
+            <span class="green box"></span>
+          </div>
+        </div>
         <div class="comments-header" id="comments-header">
           <h3>> </h3>
         </div>
         <div id="comments-body" >
           <div id="comments-list">
+            <div id="progress-bar-container hidden">
+              <div id="progress-bar"></div>
+            </div>
             <span class="blinking-cursor">" "</span>
           </div>
         </div>
       </div>
     </div>
-    
-  <script>
-      var headerFinished = false;
-      var head_text = "pip install roastbot...";
-      var a = 0;
-      var header = $("#comments-header h3");
-      var interval = setInterval(function() {
-        $('.blinking-cursor').remove();
-        header.append(head_text[a]);
-        header.append("<span class='blinking-cursor'>' '</span>");
-        a++;
-        if (a >= head_text.length) {
-          $('.blinking-cursor').remove();
-          clearInterval(interval);
-          startCommentPrinting();
-        }
-      }, 100);
-      
-      function startCommentPrinting() {
-      var commentsList = $("#comments-list");
-      var prompts = ["Waiting for image upload...", "Too scared to upload?", "Don't worry, I'll be nice. I promise..."];
-      var currentPrompt = 0;
-      var b = 0;
-      function startPrinting() {
-        if (b === 0) {
-          commentsList.text("");
-        }
-        $('.blinking-cursor').remove();
-        commentsList.append(prompts[currentPrompt][b]);
-        commentsList.append("<span class='blinking-cursor'>' '</span>");
-        b++;
-        if (b >= prompts[currentPrompt].length) {
-          clearInterval(interval);
-          currentPrompt++;
-          b = 0;
-          if (currentPrompt >= prompts.length) {
-              currentPrompt = 0;
-          }
-          setTimeout(() => {
-            interval = setInterval(startPrinting, 100);
-          }, 5000);
-        }
-      }
-      interval = setInterval(startPrinting, 100);
-  }
-
-
-
-    $("form").submit(function(event) {
-        event.preventDefault();
-        var formData = new FormData(this);
-        $.ajax({
-            url: '/',
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-              success: function (data) {  
-                document.getElementById("comments-list").scrollIntoView();  
-                var comments = data.comments;
-                comments = JSON.parse(comments);
-                comments = comments.map(comment => comment.replace("[", "").replace("]", "").replace("\u2019", "'"));
-                var comment_html = "";
-                $("#comments-list").append("<br>"); 
-                function typeComment(i, j) {                      
-                  if (i < comments.length) {                         
-                    if (j < comments[i].length) {
-                      $('.blinking-cursor').remove();
-                      $("#comments-list").append(comments[i][j]);
-                      $("#comments-list").append("<span class='blinking-cursor'>' '</span>");
-                      var delay = Math.floor(Math.random() * 75) + 25;
-                      document.querySelector('.blinking-cursor').style.animationDelay = delay + 'ms';
-                      setTimeout(function () {
-                        typeComment(i, j + 1);
-                      }, delay);
-                    } else {
-                      // $("#comments-list").append("<span class='blinking-cursor'></span>");
-                      $("#comments-list").append("<br>").append("<br>");
-                      setTimeout(function () {
-                        typeComment(i + 1, 0);
-                      }, 500);
-                    }
-                  }
-                }
-                typeComment(0, 0);
-                $("#user-img").attr("src", data.user_img);
-                $("#match-img").attr("src", data.match_img);
-                $('img').removeClass('hidden');
-              },
-                    error: function (data) {
-                console.log("Error: " + data);
-            }
-        });
-    });
-
-  </script>
+  </div>
+  <script src="static/scripts.js"></script>
 </body>
 </html>

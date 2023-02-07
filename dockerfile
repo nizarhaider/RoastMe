@@ -1,5 +1,5 @@
 # Use an official Python runtime as the base image
-FROM python:3.7
+FROM python:3.6.6
 
 # Set the working directory to /app
 WORKDIR /app

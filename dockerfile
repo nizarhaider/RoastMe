@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install libgl1 -y
 
 
 RUN pip3 install --no-cache-dir -r requirements.txt
-
+RUN pip3 install gunicorn
 # # Set environment variable
 # ENV FLASK_APP=app.py
 

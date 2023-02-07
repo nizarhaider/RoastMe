@@ -13,8 +13,9 @@ COPY . ./
 
 # # Copy the current directory contents into the container at /app
 # COPY . /app
-RUN apt-get update && apt-get install -y git ninja-build libglib2.0-0 libsm6 libxrender-dev libxext6 libgl1-mesa-glx
-# Install the required packages
+RUN apt-get update
+RUN apt install -y libgl1-mesa-glx
+
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # # Set environment variable

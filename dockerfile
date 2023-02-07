@@ -13,8 +13,8 @@ COPY . ./
 
 # # Copy the current directory contents into the container at /app
 # COPY . /app
-RUN apt-get update
-RUN apt install -y libgl1-mesa-glx
+RUN apt-get update && apt-get install libgl1
+
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 

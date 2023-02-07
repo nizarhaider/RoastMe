@@ -14,7 +14,7 @@ RUN pip3 install -r requirements.txt
 ENV FLASK_APP=app.py
 
 # Expose port 80
-EXPOSE 80
+EXPOSE 8080
 
 # Define the command to run the application
 CMD ["flask", "run", "--host=0.0.0.0"]

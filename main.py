@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    folder = 'static/images'
+    folder = '/app/static/images'
     shutil.rmtree(folder)
     os.mkdir(folder)
 
@@ -34,10 +34,10 @@ def handle_form():
     df["embeddings"] = df["embeddings"].apply(lambda x: np.array(list(map(float, x.replace("[", "").replace("]", "").split()))))
     
     image_file = request.files['image']
-    image_file.save(os.path.join('static\images', image_file.filename))
+    image_file.save(os.path.join('app\static\images', image_file.filename))
 
     # image = request.files.get('image')
-    user_img_path = os.path.join('static\images', image_file.filename)
+    user_img_path = os.path.join('app\static\images', image_file.filename)
     if imghdr.what(user_img_path) == None:
         return jsonify({"fun_pass": "Invalid image type. I only support png, jpg or jpeg at the moment :/ "})
 
@@ -51,8 +51,8 @@ def handle_form():
 
         comments, match_img = result
         comments = ast.literal_eval(comments)
-        match_img.save(os.path.join('static/images', "match.jpg"))
-        match_img_path = os.path.join('static/images', "match.jpg")
+        match_img.save(os.path.join('app/static/images', "match.jpg"))
+        match_img_path = os.path.join('app/static/images', "match.jpg")
         # user_img_path = os.path.join('static/images', "user.jpg")
         comments=json.dumps(comments)
         response = {'comments': comments, 'match_img': match_img_path, 'user_img': user_img_path, "fun_pass": fun_pass}

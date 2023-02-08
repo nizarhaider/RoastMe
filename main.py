@@ -36,7 +36,7 @@ def handle_form():
 
     df= pd.read_csv('data_with_embeddings_fixed.csv')
     df["embeddings"] = df["embeddings"].apply(lambda x: np.array(list(map(float, x.replace("[", "").replace("]", "").split()))))
-    base_image =  os.path.join(basedir, "static", "images")
+    base_image =  os.path.join("static", "images")
     image_file = request.files['image']
     image_file.save(os.path.join(base_image, image_file.filename))
 

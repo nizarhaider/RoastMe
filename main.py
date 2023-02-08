@@ -21,10 +21,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    # folder = '/app/static/images'
+
     basedir = os.path.abspath(os.path.dirname(__file__))
     folder = os.path.join(basedir, "static", "images")
-    shutil.rmtree(folder)
+    if os.path.exists(folder):
+        shutil.rmtree(folder)
     os.mkdir(folder)
 
     return render_template('index.html')

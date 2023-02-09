@@ -11,6 +11,7 @@ import json
 import imghdr
 
 app = Flask(__name__)
+app.debug=True
 
 # # Load data
 # client = storage.Client()

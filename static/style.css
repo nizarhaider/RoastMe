@@ -147,3 +147,17 @@ pre {
     width: 15px;
     background-color: #00ca4e;
     }
+
+.toast {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    border-radius: 3px;
+    }
+    
+button.btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    }

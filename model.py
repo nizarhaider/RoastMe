@@ -64,14 +64,12 @@ def find_closest_match(df, path):
         fun_pass = "True"
         result = comments, image
         
-        print(fun_pass)
         return fun_pass, result
 
     except:
 
         fun_pass = "False"
         result = 0
-        print(fun_pass)
 
         return fun_pass, result
     

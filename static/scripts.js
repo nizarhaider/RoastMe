@@ -1,7 +1,6 @@
 
       document.getElementById("submit-button").addEventListener("click", haltFunction);
 
-    
       var headerFinished = false;
       var head_text = "pip install roastbot...";
       var a = 0;
@@ -116,16 +115,35 @@
                 
               }
               else if(data.fun_pass=="False"){
+                $("#comments-list").text("");
+                $("#toast-body").text("");
                 document.getElementById("comments-list").scrollIntoView();  
-                comments = "I couldn't find your face, it must be hiding behind all that ugly";
+                comments = "Failed to detect face. Please try a different image";
                 $("#comments-list").append("<br>"); 
-                $("#comments-list").append(comments);
+                $("#comments").append(comments);
+                $("#toast-body").append(comments);
+
+                $('.toast').toast('show');
+                setTimeout(function(){
+                    $('.toast').toast('hide');
+                }, 5000);
               }
+
               else{
+
+                $("#comments-list").text("");
+                $("#toast-body").text("");
+
                 document.getElementById("comments-list").scrollIntoView();  
                 comments = data.fun_pass
                 $("#comments-list").append("<br>"); 
                 $("#comments-list").append(comments);
+                $("#toast-body").append(comments);
+
+                $('.toast').toast('show');
+                setTimeout(function(){
+                    $('.toast').toast('hide');
+                }, 5000);
 
               }
             },

@@ -28,8 +28,8 @@ pre {
     display: block;
     font-size: 87.5%;
     color: #ffffff;
-  }
-  
+    }
+    
 .bg-custom {
     background-color: #0f172a;
     margin-bottom: 20px;
@@ -38,15 +38,15 @@ pre {
 .frame {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 400px;
     height: 300px;
-    justify-content: center;
-    border: solid 3px #0051a8;
-    box-shadow: 10px 10px 10px #070707;
     overflow: hidden;
     background-color: aliceblue;
-    z-index: -3;
+    border: solid 3px #0051a8;
+    box-shadow: 10px 10px 10px #070707;
     border-radius: 8px;
+    position: relative;
     }
 
 .img{
@@ -67,10 +67,10 @@ pre {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-40%, -50%);
+    transform: translate(-50%, -50%);
     z-index: 1;
     }
-
+    
 .blinking-cursor {
     width: 20px;
     height: 15px;

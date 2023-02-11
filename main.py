@@ -38,7 +38,11 @@ def handle_form():
     df= pd.read_csv('data_with_embeddings_fixed.csv')
     df["embeddings"] = df["embeddings"].apply(lambda x: np.array(list(map(float, x.replace("[", "").replace("]", "").split()))))
     base_image =  os.path.join("static", "images")
+    if 'image' not in request.files:
+        return jsonify({'fun_pass': 'No image file found in the request'})
     image_file = request.files['image']
+    if image_file.filename == '':
+        return jsonify({'fun_pass': 'No image file selected'})
     image_file.save(os.path.join(base_image, image_file.filename))
 
     # image = request.files.get('image')

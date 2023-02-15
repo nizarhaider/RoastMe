@@ -16,11 +16,15 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="static/style.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Righteous&display=swap" rel="stylesheet">
 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@500&family=Righteous&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@500;700&family=Righteous&display=swap" rel="stylesheet">
     <!-- Include the Dropzone.js library -->
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link
@@ -28,6 +32,8 @@
       href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
       type="text/css"
     />
+    
+
     <title>RoastMe</title>
   </head>
   <body class="bg-custom text-white">
@@ -49,6 +55,7 @@
       <div class="row d-flex">
         <div class="d-flex align-items-center mx-auto col-md-4 flex-column">
           <div class="frame mx-auto">
+
             
             <form  class="dropzone" id="myDropzone" enctype="multipart/form-data">
               <div class="fallback">
@@ -56,24 +63,12 @@
               </div>
             </form>
            
-            <!-- <img src="" class="img-fluid w-100" id="user-img"> -->
           </div>  
         </div>
-        <!-- <div class="col-6"> 
-          <div class="frame">
-            <img src="" class="img-fluid img-50 hidden" id="match-img">
-          </div>
-        </div> -->
+        
       </div>
       <div class="my-5">
-      <!-- <form method="post" enctype="multipart/form-data" >
-        <div class="form-group">
-          <label for="image" >Upload at your own risk:</label>
-          <input type="file" class="form-control-file" id="image" name="image">
-        </div>
-        <button id="submit-button"  type="submit" class="btn btn-danger ">Submit</button>
-      </form>
-      </div> -->
+      
       <div class="comments-container" id="comments-container">
         <div class="tools">
           <div class="circle">
@@ -90,8 +85,18 @@
           <h3>> </h3>
         </div>
         <div id="comments-body" >
+          <br>
+          <div class="progress-bar-wrapper" style="display: none;">
+            <div class="progress-bar">
+              <div class="progress-block"></div>
+            </div>
+
+          </div>
+
           <div id="comments-list">
+
             <span class="blinking-cursor">" "</span>
+            
           </div>
         </div>
       </div>

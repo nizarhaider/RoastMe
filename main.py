@@ -52,7 +52,7 @@ def handle_form():
 
     fun_pass,result = find_closest_match(df,user_img_path)
     
-    if fun_pass=="False":
+    if fun_pass != "True":
         # print(fun_pass)
         return jsonify({"fun_pass": fun_pass})
     else:

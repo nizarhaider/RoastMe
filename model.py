@@ -12,7 +12,7 @@ detector = MTCNN()
 image_size=(256,400)
 
 
-def find_closest_match(df, path):
+def find_closest_match(df, path, threshold=1.3):
     try:
         # Load the image
         image = cv2.imread(path)
@@ -50,26 +50,33 @@ def find_closest_match(df, path):
                 return distance.euclidean(x, face_embedding.detach().numpy())
             else:
                 return None
-
         # Apply the distance function to the 'embeddings' column of the dataframe
         df['distance'] = df['embeddings'].apply(find_distance)
         # Find the index of the closest match
         closest_index = df['distance'].idxmin()
-        # Return the 'comments' column of the closest match
-        url = df.at[closest_index, 'image_url']
-        image = Image.open(urllib.request.urlretrieve(url)[0])
-
-        comments = df.at[closest_index, 'comments']
         
-        fun_pass = "True"
-        result = comments, image
         
-        return fun_pass, result
+        
+        if df.at[closest_index, 'distance'] < threshold:
 
+            # Return the 'comments' column of the closest match
+            url = df.at[closest_index, 'image_url']
+            image = Image.open(urllib.request.urlretrieve(url)[0])
+            comments = df.at[closest_index, 'comments']
+            
+            fun_pass = "True"
+            result = comments, image
+            
+            return fun_pass, result
+        else:
+            fun_pass = "Similarity not found"
+            result = 0, 0
+            
+            return fun_pass, result
     except:
 
-        fun_pass = "False"
-        result = 0
+        fun_pass = "Cannot detect face"
+        result = 0, 0
 
         return fun_pass, result
     

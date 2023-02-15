@@ -1,7 +1,9 @@
 header {
     margin-bottom: 40px;
-    background-color: #0f172a ;
-    font-family: 'Open Sans', sans-serif;
+    /* background-color: #0f172a ; */
+    background-color: #910b0b ;
+    
+    font-family: 'Righteous', cursive;
     margin-bottom: 50px;
     }
 
@@ -11,18 +13,26 @@ header {
     }
 
 .comments-container {
-    background: #011522;
-    border: 2px solid #0051a8;
+    /* background: #011522; */
+    background: #000000;
+
+    /* border: 2px solid #0051a8; */
+    border: 2px solid #ffffff;
+
     box-shadow: 2px 2px 10px #414141;
     border-radius: 8px;
     z-index: 1;
     padding: 20px;
+    font-family: 'Righteous', cursive;
     }
 
 .comments-header {
     font-weight: bold;
-    color: #007bff;
-    }
+    /* color: #007bff; */
+    color: #ffffff;
+    font-family: 'Righteous', cursive;
+
+}
 
 pre {
     display: block;
@@ -31,20 +41,30 @@ pre {
     }
     
 .bg-custom {
-    background-color: #0f172a;
+    /* background-color: #0f172a; */
+    background-color: #910b0b;
+
     margin-bottom: 20px;
     }
 
 .dropzone {
-    background-color: #25327a;
-    border: 2px dashed #ccc;
-    border-radius: 10px;
+    /* background-color: #011522!important; */
+    background-color: #ffffff!important;
+    /* border: 2px dashed #0051a8!important; */
+    /* border: 2px dashed #ffffff!important; */
+
+    /* box-shadow: 5px 5px 10px #ffffff; */
+    box-shadow: 0 0 20px 30px #750f0fbe;
+    margin: 0px;
+    border-radius: 20px;
+    max-width: 600px;
     width: 400px;
     height: 300px;
     text-align: center;
     font-size: 18px;
-    color: black;
+    color: rgb(0, 0, 0);
     }
+
 .dz-preview .dz-image {
     width: 200px !important;
     height: 200px !important;
@@ -63,8 +83,8 @@ pre {
 .blinking-cursor {
     width: 20px;
     height: 15px;
-    color: #0051a8;
-    background-color: #0051a8;
+    color: #910b0b;
+    background-color: #910b0b;
     animation: blink 1s linear infinite;
     }
 
@@ -80,24 +100,37 @@ pre {
     }
     }
 
-#progress-bar-container {
+.progress-bar-wrapper {
+    display: flex;
+    align-items: center;
+    height: 1em; /* Changed height to make the progress bar 1/2 the size */
+    background-color: #000000;
+    padding: 0.1em;
     width: 50%;
-    height: 20px;
-    background-color: #0051a8;
     position: relative;
-    max-width: 50%;
-    }
     
-.progress-bar {
-    width: 0%; /* start with 0% width */
-    height: 20px; /* set the height */
-    background-color: #0051a8; /* set the background color */
-    text-align: center; /* center the text */
-    line-height: 20px; /* center the text vertically */
-    color: #ffffff; /* set the text color */
-    max-width: 50%;
-    }
+}   
 
+
+.progress-bar {
+    width: 0%; /* Reduced width to half of its original value */
+    height: 100%;
+    background-color: #050505!important;
+    position: relative;
+    justify-content: space-between;
+    display: block; /* Changed display to block to make the progress bar visible */
+    margin-top: 10px;
+}
+
+  .progress-block {
+    height: 150%;
+    flex-basis: calc(6% + 3px); /* width of each block with 1px margin */
+    background-color: #00ff00;
+    margin-right: 3px; /* spacing between blocks */
+  }
+  
+
+  
 .tools {
     display: flex;
     align-items: center;

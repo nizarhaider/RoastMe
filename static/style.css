@@ -15,10 +15,8 @@ header {
 .comments-container {
     /* background: #011522; */
     background: #000000;
-
     /* border: 2px solid #0051a8; */
     border: 2px solid #ffffff;
-
     box-shadow: 2px 2px 10px #414141;
     border-radius: 8px;
     z-index: 1;
@@ -43,7 +41,6 @@ pre {
 .bg-custom {
     /* background-color: #0f172a; */
     background-color: #910b0b;
-
     margin-bottom: 20px;
     }
 
@@ -52,10 +49,8 @@ pre {
     background-color: #ffffff!important;
     /* border: 2px dashed #0051a8!important; */
     /* border: 2px dashed #ffffff!important; */
-
     /* box-shadow: 5px 5px 10px #ffffff; */
     box-shadow: 0 0 20px 30px #750f0fbe;
-    margin: 0px;
     border-radius: 20px;
     max-width: 600px;
     width: 400px;
@@ -128,8 +123,6 @@ pre {
     background-color: #00ff00;
     margin-right: 3px; /* spacing between blocks */
   }
-  
-
   
 .tools {
     display: flex;

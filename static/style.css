@@ -119,7 +119,7 @@ pre {
 
   .progress-block {
     height: 150%;
-    flex-basis: calc(6% + 3px); /* width of each block with 1px margin */
+    flex-basis: calc(8%); /* width of each block with 1px margin */
     background-color: #00ff00;
     margin-right: 3px; /* spacing between blocks */
   }

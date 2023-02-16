@@ -31,6 +31,9 @@ header {
     font-family: 'Righteous', cursive;
 
 }
+.comments-body {
+    margin-left: 20px;
+    }
 
 pre {
     display: block;

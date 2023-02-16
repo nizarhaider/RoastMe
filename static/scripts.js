@@ -123,6 +123,10 @@ Dropzone.options.myDropzone = {
       });
 
       haltFunction();
+      //clear elements inside progress bar
+      progressBar.innerHTML = "";
+      
+
       progressBar.style.display = "flex";
       var blockCount = 0;
       var intervalId = setInterval(function () {
@@ -138,7 +142,6 @@ Dropzone.options.myDropzone = {
           clearInterval(intervalId);
 
 
-          console.log(data.fun_pass)
           if (data.fun_pass == "True") {
             document.getElementById("comments-list").scrollIntoView();
             var comments = data.comments;
@@ -203,7 +206,6 @@ Dropzone.options.myDropzone = {
               $('.toast').toast('hide');
             }, 5000);
           }
-
           else {
 
             $("#comments-list").text("");

@@ -114,12 +114,11 @@ Dropzone.options.myDropzone = {
         })
       });
 
+      haltFunction();
 
       ajaxPromise.then((response) => {
         data = response;
-      });
-
-      haltFunction();
+      
       progressBar.style.display = "flex";
       var blockCount = 0;
       var intervalId = setInterval(function () {
@@ -223,6 +222,7 @@ Dropzone.options.myDropzone = {
         }
 
       }, 1000);
+    });
 
 
     });

@@ -68,7 +68,5 @@ def handle_form():
         
         return jsonify(response)
         
-        
-
 if __name__ == '__main__':
     app.run()

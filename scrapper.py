@@ -1,75 +1,74 @@
+import time
 import praw
 import pandas as pd
 from tqdm import tqdm
-from pmaw import PushshiftAPI
-import datetime as dt
 import os
+import time
+import concurrent.futures
 
-# to use PSAW
 
 reddit = praw.Reddit(
     client_id="m_zO2sVNL0uFZ-5U2grDVg",
     client_secret="O11TNu-7b-obob1c_i7q2-3WeBfZag",
-    user_agent="android:com.2broke2code.roastbot:v1.1.1 (by u/2broke2code)",
+    username="2broke2code",
+    password="Fonseka12",
+    user_agent="android:com.2broke2code.roastbot:v1.2.1 (by u/2broke2code)",
 )
-print("PRAW GOOD")
 
-api_praw = PushshiftAPI(praw=reddit)
+all_ids = []
 
-posts = api_praw.search_submissions(subreddit="science", limit=10)
-post_list = [post for post in posts.id]
-print(post_list)
+# Path to the folder containing the JSON files
+folder_path = "converted"
 
-# print("PUSHSHIFT GOOD")
+# Loop through all files in the folder
+for filename in os.listdir(folder_path):
+    if filename.endswith(".json"):
+        # Construct the full file path by joining the folder path and file name
+        file_path = os.path.join(folder_path, filename)
+        
+        # Open the file and read the JSON data into a DataFrame
+        with open(file_path) as f:
+            data = pd.read_json(f, lines=True)
+            
+            # Extract the IDs from the DataFrame and add them to the list
+            all_ids.extend(data["id"].tolist())
 
-# if os.path.exists("data_test.csv"):
-#     # If the file exists, read the last timestamp from the file
-#     df = pd.read_csv("data_test.csv")
-#     ts_before = df['timestamp'].iloc[-1]
-# else:
-#     # If the file doesn't exist, use the current datetime
-#     ts_before = dt.datetime.now().timestamp()
-#     print(ts_before)
-# print("Got date")
-# # subreddit = reddit.subreddit("RoastMe")
-# # hot_posts = subreddit.hot(limit=1000)
 
-# # use PSAW only to get id of submissions in time interval
-# gen = api.search_submissions(
-#     until = ts_before, #October 1st
-#     since = 1514764800,  #January 1st 
+
+def process_submission(submission_id):
+    try:
+        submission = reddit.submission(id=submission_id)
+        if submission.url:
+            comments = submission.comments[1:10]
+            comment_bodies = []
+            for comment in comments:
+                comment_bodies.append(f"[{comment.body}]")
+
+            return {"image_url": submission.url, "comments": comment_bodies}
+    except Exception as e:
+        print(f"Error retrieving submission with ID {submission_id}: {e}")
+        return None
     
-#     subreddit=['RoastMe'],
-#     limit=100
-# )
-# print("Searched")
+            
+# Create a DataFrame with the combined IDs
+df = pd.DataFrame({"id": all_ids})
 
 
-# # Create an empty list to store the data
-# data = []
-
-# # Iterate through the hot posts in the subreddit
-# for submission_psaw in tqdm(gen, total=10,desc='Scraping Shit'):
-
-# # for submission in tqdm(hot_posts,total=1000,desc='Scraping Posts'):
-#     submission_id = submission_psaw.d_['id']
-#     submission = reddit.submission(id=submission_id)
-
-#     post_data = {"image_url": submission.url, "timestamp": submission.created_utc}
-#     comments = submission.comments[1:10]
-#     comment_bodies = []
-#     for comment in comments:
-#         comment_bodies.append(f"[{comment.body}]")
-
-#     post_data["comments"] = comment_bodies
-#     data.append(post_data)
-
-# # Create a dataframe from the list
-# df = pd.DataFrame(data)
-
-# # print the dataframe
-# print(df)
-
-# # df.to_csv('data_test.csv', index=False)
+# Loop through the IDs and extract the desired information
+output = []
 
 
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+    futures = [executor.submit(process_submission, submission_id) for submission_id in df["id"]]
+    for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures)):
+        result = future.result()
+        if result is not None:
+            output.append(result)
+
+
+# Create a DataFrame with the output
+output_df = pd.DataFrame(output)
+
+# Write the results to a CSV file
+output_df.to_csv("output.csv", index=False)

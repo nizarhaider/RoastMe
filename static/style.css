@@ -48,11 +48,8 @@ pre {
     }
 
 .dropzone {
-    /* background-color: #011522!important; */
     background-color: #ffffff!important;
-    /* border: 2px dashed #0051a8!important; */
-    /* border: 2px dashed #ffffff!important; */
-    /* box-shadow: 5px 5px 10px #ffffff; */
+
     box-shadow: 0 0 20px 30px #750f0fbe;
     border-radius: 20px;
     max-width: 600px;
@@ -98,35 +95,46 @@ pre {
     }
     }
 
-.progress-bar-wrapper {
-    display: flex;
-    align-items: center;
-    height: 1em; /* Changed height to make the progress bar 1/2 the size */
-    background-color: #000000;
-    padding: 0.1em;
-    width: 50%;
-    position: relative;
-    
-}   
+    .progress-bar-wrapper {
+        display: flex;
+        align-items: center;
+        height: 1em;
+        background-color: #000000;
+        padding: 0.1em;
+        width: 50%;
+        position: relative;
+      }
 
+      .progress-bar {
+        width: 0%;
+        height: 100%;
+        background-color: #050505!important;
+        position: relative;
+        justify-content: space-between;
+        display: block;
+        margin-top: 10px;
+      }
+      
+      .progress-block {
+        height: 150%;
+        flex-basis: calc(8%);
+        background-color: #00ff00;
+        margin-right: 3px;
+      }
 
-.progress-bar {
-    width: 0%; /* Reduced width to half of its original value */
-    height: 100%;
-    background-color: #050505!important;
-    position: relative;
-    justify-content: space-between;
-    display: block; /* Changed display to block to make the progress bar visible */
-    margin-top: 10px;
-}
+      .progress-start {
+        font-size: 30px;
+        /* flex-basis: calc(8%); */
+        margin-right: -6px;
+      }
+      .progress-end {
+        font-size: 30px;
+        
 
-  .progress-block {
-    height: 150%;
-    flex-basis: calc(8%); /* width of each block with 1px margin */
-    background-color: #00ff00;
-    margin-right: 3px; /* spacing between blocks */
-  }
-  
+        /* flex-basis: calc(8%); */
+        margin-left: -8px;
+      }
+      
 .tools {
     display: flex;
     align-items: center;

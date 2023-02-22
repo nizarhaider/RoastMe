@@ -1,0 +1,7 @@
+facenet-pytorch
+mtcnn
+numpy
+tqdm
+Pillow
+urllib3
+pandas

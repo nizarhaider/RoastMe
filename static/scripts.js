@@ -83,9 +83,6 @@ Dropzone.options.myDropzone = {
       this.submit();
     });
 
-
-
-
     this.on("addedfile", function (file) {
 
       // Perform any additional processing on the file here
@@ -125,8 +122,19 @@ Dropzone.options.myDropzone = {
       haltFunction();
       //clear elements inside progress bar
       progressBar.innerHTML = "";
-      
 
+// Create the start and end elements
+    var start = document.createElement("div");
+    start.classList.add("progress-start");
+    start.innerText = "[";
+
+    var end = document.createElement("div");
+    end.classList.add("progress-end");
+    end.innerText = "]";
+
+    // Append the start and end elements to the progress bar wrapper
+    progressBar.appendChild(start);
+    
       progressBar.style.display = "flex";
       var blockCount = 0;
       var intervalId = setInterval(function () {
@@ -139,6 +147,7 @@ Dropzone.options.myDropzone = {
         }
 
         else {
+          progressBar.appendChild(end);
           clearInterval(intervalId);
 
 
@@ -212,7 +221,7 @@ Dropzone.options.myDropzone = {
             $("#toast-body").text("");
 
             document.getElementById("comments-list").scrollIntoView();
-            comments = data.fun_pass
+            comments = "That face giving me problems. Please try a different image"
             $("#comments-list").append("<br>");
             $("#comments-list").append(comments);
             $("#toast-body").append(comments);

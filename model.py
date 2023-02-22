@@ -11,8 +11,7 @@ model = InceptionResnetV1(pretrained='vggface2').eval()
 detector = MTCNN()
 image_size=(256,400)
 
-
-def find_closest_match(df, path,  threshold_norm=0.6):
+def find_closest_match(df, path,  threshold_norm=0.7):
     try:
         # Load the image
         image = cv2.imread(path)
@@ -58,7 +57,6 @@ def find_closest_match(df, path,  threshold_norm=0.6):
         # Find the index of the closest match
         closest_index = df['distance_norm'].idxmin()
         print("Similarity level: ", df.at[closest_index, 'distance_norm'])
-        
         
         if df.at[closest_index, 'distance_norm'] < threshold_norm:
             

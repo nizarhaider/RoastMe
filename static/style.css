@@ -1,10 +1,10 @@
 header {
-    margin-bottom: 40px;
     /* background-color: #0f172a ; */
     background-color: #910b0b ;
-    
     font-family: 'Righteous', cursive;
-    margin-bottom: 50px;
+    
+    border-bottom: 5px solid #8a0d0d;
+
     }
 
 .navbar-brand{
@@ -49,7 +49,7 @@ pre {
 
 .dropzone {
     background-color: #ffffff!important;
-
+    font-family: 'Open Sans', sans-serif;
     box-shadow: 0 0 20px 30px #750f0fbe;
     border-radius: 20px;
     max-width: 600px;
@@ -116,23 +116,23 @@ pre {
       }
       
       .progress-block {
-        height: 150%;
-        flex-basis: calc(8%);
+        height: 140%;
+        flex-basis: calc(2%);
         background-color: #00ff00;
         margin-right: 3px;
       }
 
       .progress-start {
-        font-size: 30px;
+        font-size: 20px;
         /* flex-basis: calc(8%); */
-        margin-right: -6px;
+        margin-right: 1px;
       }
       .progress-end {
-        font-size: 30px;
+        font-size: 20px;
         
 
         /* flex-basis: calc(8%); */
-        margin-left: -8px;
+        margin-left: -1px;
       }
       
 .tools {

@@ -37,7 +37,7 @@ var isPrinting = false;
 function startCommentPrinting() {
   isPrinting = true;
   var commentsList = $("#comments-list");
-  var prompts = ["Waiting for image upload...", "Too scared to upload?", "Don't worry, I'll be nice. I promise..."];
+  var prompts = ["...", "Too scared to upload that face?...", "Don't worry, I'll be nice. I promise...", "Your mom was faster than this...", "Tell her I said hi btw"];
   var currentPrompt = 0;
   var b = 0;
   function startPrinting() {
@@ -66,12 +66,13 @@ function startCommentPrinting() {
 
 Dropzone.options.myDropzone = {
   url: '/',
+  paramName: "image",
   method: 'post',
   maxFiles: 1,
   addRemoveLinks: true,
-  dictDefaultMessage: "Drop files here to upload",
+  dictDefaultMessage: "Click here to upload a selfie",
   acceptedFiles: "image/*",
-  maxFilesize: 10,
+  maxFilesize: 1,
   resizeWidth: null,
   resizeHeight: null,
 
@@ -88,10 +89,13 @@ Dropzone.options.myDropzone = {
       // Perform any additional processing on the file here
       if (this.files.length > 1) {
         this.removeFile(this.files[0]);
+        this.options.dictRemoveFile = "Remove";
+        this.options.dictCancelUpload = "Cancel";
       }
-      this.options.dictRemoveFile = "Remove";
-      this.options.dictCancelUpload = "Cancel";
-
+      haltFunction();
+    });
+    
+    this.on("success", function (file, response) {
       const ajaxPromise = new Promise((resolve, reject) => {
 
         formData = new FormData();
@@ -111,9 +115,7 @@ Dropzone.options.myDropzone = {
         })
       });
 
-      
       let data = {}; // default value
-
 
       ajaxPromise.then((response) => {
         data = response;
@@ -123,27 +125,26 @@ Dropzone.options.myDropzone = {
       //clear elements inside progress bar
       progressBar.innerHTML = "";
 
-// Create the start and end elements
-    var start = document.createElement("div");
-    start.classList.add("progress-start");
-    start.innerText = "[";
+      // Create the start and end elements
+      var start = document.createElement("div");
+      start.classList.add("progress-start");
+      start.innerText = "|";
 
-    var end = document.createElement("div");
-    end.classList.add("progress-end");
-    end.innerText = "]";
+      var end = document.createElement("div");
+      end.classList.add("progress-end");
+      end.innerText = "|";
 
-    // Append the start and end elements to the progress bar wrapper
-    progressBar.appendChild(start);
-    
+      // Append the start and end elements to the progress bar wrapper
+      progressBar.appendChild(start);
+
       progressBar.style.display = "flex";
       var blockCount = 0;
       var intervalId = setInterval(function () {
-        if (blockCount < 10) {
+        if (blockCount < 12 && data.fun_pass != "True" && data.fun_pass != "Cannot detect face" && data.fun_pass != "Similarity not found" ) {
           var block = document.createElement("div");
           block.classList.add("progress-block");
           progressBar.appendChild(block);
           blockCount++;
-          
         }
 
         else {
@@ -179,10 +180,10 @@ Dropzone.options.myDropzone = {
               }
               typing = false;
             }
-            
+
             document.getElementById("comments-list").scrollIntoView();
             typeComment(0, 0);
-            
+
             $('frame').removeClass('hidden');
             $("#user-img").attr("src", data.user_img);
 

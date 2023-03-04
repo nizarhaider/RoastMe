@@ -31,6 +31,7 @@ def index():
 
     return render_template('index.html')
 
+
 @app.route('/', methods=['POST'])
 def handle_form(): 
     basedir = os.path.abspath(os.path.dirname(__file__))
@@ -54,6 +55,7 @@ def handle_form():
     
     if fun_pass != "True":
         # print(fun_pass)
+        print("it didn't :()")
         return jsonify({"fun_pass": fun_pass})
     else:
         # print(fun_pass) 
@@ -65,7 +67,7 @@ def handle_form():
         # user_img_path = os.path.join('static/images', "user.jpg")
         comments=json.dumps(comments)
         response = {'comments': comments, 'match_img': match_img_path, 'user_img': user_img_path, "fun_pass": fun_pass}
-        
+        print(fun_pass)
         return jsonify(response)
         
 if __name__ == '__main__':

@@ -18,6 +18,7 @@ def find_closest_match(df, path,  threshold_norm=0.7):
         # image = Image.open(io.BytesIO(image.read()))
         # Convert PIL.Image to numpy.ndarray
         img = np.array(image)
+        print(img.shape)
         # Change image color from RGB to BGR
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
         # Detect the face in the image
@@ -69,6 +70,7 @@ def find_closest_match(df, path,  threshold_norm=0.7):
             result = comments, image
             
             return fun_pass, result
+        
         else:
             fun_pass = "Similarity not found"
             result = 0, 0
@@ -76,7 +78,7 @@ def find_closest_match(df, path,  threshold_norm=0.7):
             return fun_pass, result
     except:
 
-        fun_pass = "Cannot detect face"
+        fun_pass = "Cannot detect face" 
         result = 0, 0
 
         return fun_pass, result

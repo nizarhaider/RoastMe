@@ -66,13 +66,14 @@ function startCommentPrinting() {
 
 Dropzone.options.myDropzone = {
   url: '/',
+
   paramName: "image",
   method: 'post',
   maxFiles: 1,
   addRemoveLinks: true,
   dictDefaultMessage: "Click here to upload a selfie",
   acceptedFiles: "image/*",
-  maxFilesize: 1,
+  maxFilesize: 10,
   resizeWidth: null,
   resizeHeight: null,
 

@@ -53,7 +53,7 @@ function startCommentPrinting() {
   clearInterval(header_interval);
   isPrinting = true;
   var commentsList = $("#comments-list");
-  var prompts = ["...", "....", ".....", "......", "......."];
+  var prompts = ["This you?", "Working my AI magic...", "Almost there...", "God this is hard..."];
   var currentPrompt = 0;
   var b = 0;
   function startPrinting() {

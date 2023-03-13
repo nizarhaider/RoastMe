@@ -31,6 +31,10 @@ def index():
 
     return render_template('index.html')
 
+@app.route('/landing')
+def home():
+
+    return render_template('landing_page.html')
 
 @app.route('/', methods=['POST'])
 def handle_form(): 

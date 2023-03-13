@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
     <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https:1//cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
@@ -19,38 +20,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Righteous&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@500&family=Righteous&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@500;700&family=Righteous&display=swap" rel="stylesheet">
+
     <!-- Include the Dropzone.js library -->
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
+
+    <!-- Loading.js library-->
+    <link rel="stylesheet" type="text/css" href="static/loading-bar.css"/>
+    <script type="text/javascript" src="static/loading-bar.js"></script>
+
     <title>RoastMe</title>
+
   </head>
-  <body class="bg-custom text-white">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <body class="bg-custom text-white">
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark">
         <!-- <a class="navbar-brand" href="#">RoastMe</a>   -->
-        <img src="static/roastme.gif" alt="reddit logo with burning eyes" style="margin-top: -15px; margin-bottom: -8px;" />
+        <img class="header-img" src="static/roastme.gif" href="index.html" alt="reddit logo with burning eyes" style="margin-top: -15px; margin-bottom: -8px; height: 90px;" />
       </nav>
     </header>
-    <div class="container">
-      <div class="toast align-items-center bg-warning text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-          <div class="toast-body" id="toast-body">
+
+      <div class="container">
+        <div class="toast align-items-center bg-warning text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body" id="toast-body">
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
-      </div>
+
       <div class="my-5 d-flex justify-content-center align-items-center">
-            <form  class="dropzone " id="myDropzone" enctype="multipart/form-data">
-              <div class="fallback">
-                <input name="image" type="file" />
-              </div>
-            </form>
+        <form  class="dropzone " id="myDropzone" enctype="multipart/form-data">
+          <div class="fallback">
+            <input name="image" type="file" />
+          </div>
+        </form>
       </div>
+
       <div class="my-5">
       <div class="comments-container" id="comments-container">
         <div class="tools">
@@ -64,25 +70,31 @@
             <span class="green box"></span>
           </div>
         </div>
+
         <div class="comments-header" id="comments-header">
           <h3>> </h3>
         </div>
+
         <div id="comments-body" class="comments-body" >
+
           <br>
-          <div class="progress-bar-wrapper" style="display: none;">
-            <div class="progress-bar">
-              <div class="progress-start" ></div>
-              <div class="progress-block"></div>
-              <div class="progress-end" ></div>
+
+          <div >
+            <div class="container">
+              <div class="row align-items-center">
+                <div class="col-2" >
+                  <img  src="static/chat_icon.png" style="max-width: 100%; min-width: 50px;"/>
+                </div>
+                <div class="col-10 " id="comments-list" >
+                  <span class="blinking-cursor">" "</span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div id="comments-list">
-            <span class="blinking-cursor">" "</span>            
-          </div>
-        </div>
+            
+      </div>  
       </div>
     </div>
   </div>
   <script src="static/scripts.js"></script>
-</body>
+    </body>
 </html>

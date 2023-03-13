@@ -1,8 +1,11 @@
 var headerFinished = false;
-var head_text = "pip install roastbot...";
+var head_text = "starting roastbot...";
+var com_text = "Waiting to see that face...";
 var a = 0;
+var x = 0;
 var barCompleted = false;
 var header = $("#comments-header h3");
+var commentsList = $("#comments-list");
 var header_interval = setInterval(function () {
   $('.blinking-cursor').remove();
   header.append(head_text[a]);
@@ -11,7 +14,18 @@ var header_interval = setInterval(function () {
   if (a >= head_text.length) {
     $('.blinking-cursor').remove();
     clearInterval(header_interval);
-    startCommentPrinting();
+    // startCommentPrinting();
+  
+    var comment_interval = setInterval(function () {
+      
+      if (x < com_text.length) {
+        $('.blinking-cursor').remove();
+        commentsList.append(com_text[x]);
+        commentsList.append("<span class='blinking-cursor'>' '</span>");
+        x++;
+      }
+    }, 100);
+
   }
 }, 100);
 
@@ -29,15 +43,17 @@ function haltFunction() {
   if (isPrinting) {
     clearInterval(promptInterval);
     isPrinting = false;
+    
   }
 }
 
 var isPrinting = false;
 
 function startCommentPrinting() {
+  clearInterval(header_interval);
   isPrinting = true;
   var commentsList = $("#comments-list");
-  var prompts = ["...", "Too scared to upload that face?...", "Don't worry, I'll be nice. I promise...", "Your mom was faster than this...", "Tell her I said hi btw"];
+  var prompts = ["...", "....", ".....", "......", "......."];
   var currentPrompt = 0;
   var b = 0;
   function startPrinting() {
@@ -78,7 +94,6 @@ Dropzone.options.myDropzone = {
   resizeHeight: null,
 
   init: function () {
-    var progressBar = document.querySelector('.progress-bar-wrapper');
 
     this.on("maxfilesexceeded", function (file) {
       this.removeFile(file);
@@ -93,9 +108,9 @@ Dropzone.options.myDropzone = {
         this.options.dictRemoveFile = "Remove";
         this.options.dictCancelUpload = "Cancel";
       }
-      haltFunction();
+      startCommentPrinting();
     });
-    
+
     this.on("success", function (file, response) {
       const ajaxPromise = new Promise((resolve, reject) => {
 
@@ -123,33 +138,14 @@ Dropzone.options.myDropzone = {
       });
 
       haltFunction();
-      //clear elements inside progress bar
-      progressBar.innerHTML = "";
-
-      // Create the start and end elements
-      var start = document.createElement("div");
-      start.classList.add("progress-start");
-      start.innerText = "|";
-
-      var end = document.createElement("div");
-      end.classList.add("progress-end");
-      end.innerText = "|";
-
-      // Append the start and end elements to the progress bar wrapper
-      progressBar.appendChild(start);
-
-      progressBar.style.display = "flex";
-      var blockCount = 0;
+      
+      
       var intervalId = setInterval(function () {
-        if (blockCount < 12 && data.fun_pass != "True" && data.fun_pass != "Cannot detect face" && data.fun_pass != "Similarity not found" ) {
-          var block = document.createElement("div");
-          block.classList.add("progress-block");
-          progressBar.appendChild(block);
-          blockCount++;
+        if (data.fun_pass != "True" && data.fun_pass != "Cannot detect face" && data.fun_pass != "Similarity not found" ) {
+         
         }
 
         else {
-          progressBar.appendChild(end);
           clearInterval(intervalId);
 
 

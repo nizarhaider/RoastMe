@@ -18,7 +18,7 @@ def find_closest_match(df, path,  threshold_norm=0.7):
         # image = Image.open(io.BytesIO(image.read()))
         # Convert PIL.Image to numpy.ndarray
         img = np.array(image)
-        print(img.shape)
+        # print(img.shape)
         # Change image color from RGB to BGR
         img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
         # Detect the face in the image
@@ -57,7 +57,7 @@ def find_closest_match(df, path,  threshold_norm=0.7):
         # print(df['distance_norm'])
         # Find the index of the closest match
         closest_index = df['distance_norm'].idxmin()
-        print("Similarity level: ", df.at[closest_index, 'distance_norm'])
+        # print("Similarity level: ", df.at[closest_index, 'distance_norm'])
         
         if df.at[closest_index, 'distance_norm'] < threshold_norm:
             

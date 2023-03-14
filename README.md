@@ -1,5 +1,7 @@
-# RoastBot
-RoastBot is a Flask application that utilizes machine learning to generate roasts based on a selfie provided by the user. The application is deployed on Google Cloud Run and is continuously built and deployed using Google Cloud Build and Google Container Registry.
+![RoastMe](https://github.com/nizarhaider/RoastMe.ai/blob/prod/static/roastme.gif)
+
+# RoastMe
+RoastMe is a Flask application that utilizes machine learning to generate roasts based on a selfie provided by the user. The application is deployed on Google Cloud Run and is continuously built and deployed using Google Cloud Build and Google Container Registry.
 
 ## Features
 - Accepts a selfie as input and generates a personalized roast

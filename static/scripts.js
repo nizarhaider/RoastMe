@@ -6,28 +6,39 @@ var x = 0;
 var barCompleted = false;
 var header = $("#comments-header h3");
 var commentsList = $("#comments-list");
+var chat_icon = $("#chat_icon");
+
+chat_icon.hide(); // Hide the chat_icon initially
+
 var header_interval = setInterval(function () {
   $('.blinking-cursor').remove();
   header.append(head_text[a]);
   header.append("<span class='blinking-cursor'>' '</span>");
   a++;
   if (a >= head_text.length) {
-    $('.blinking-cursor').remove();
+    
+    
+    setTimeout(function() {
+          chat_icon.fadeIn();
+        }, 2000);
     clearInterval(header_interval);
-    // startCommentPrinting();
-  
-    var comment_interval = setInterval(function () {
-      
-      if (x < com_text.length) {
-        $('.blinking-cursor').remove();
-        commentsList.append(com_text[x]);
-        commentsList.append("<span class='blinking-cursor'>' '</span>");
-        x++;
-      }
-    }, 100);
+    $('.blinking-cursor').remove();
+
+    setTimeout(function() {
+      var comment_interval = setInterval(function () {
+        if (x < com_text.length) {
+          $('.blinking-cursor').remove();
+          commentsList.append(com_text[x]);
+          commentsList.append("<span class='blinking-cursor'>' '</span>");
+          x++;
+        }
+      }, 100);
+    }, 2100);
 
   }
 }, 100);
+
+
 
 let typing = false;
 
@@ -43,7 +54,7 @@ function haltFunction() {
   if (isPrinting) {
     clearInterval(promptInterval);
     isPrinting = false;
-    
+
   }
 }
 
@@ -53,7 +64,7 @@ function startCommentPrinting() {
   clearInterval(header_interval);
   isPrinting = true;
   var commentsList = $("#comments-list");
-  var prompts = ["This you?", "Working my AI magic...", "Almost there...", "God this is hard..."];
+  var prompts = ["This you?...Damn!", "Working my AI magic...", "Almost there...", "God this is hard..."];
   var currentPrompt = 0;
   var b = 0;
   function startPrinting() {
@@ -73,7 +84,7 @@ function startCommentPrinting() {
       }
       timeout = setTimeout(() => {
         promptInterval = setInterval(startPrinting, 100);
-      }, 3000);
+      }, 5000);
     }
   }
   promptInterval = setInterval(startPrinting, 25);
@@ -84,14 +95,13 @@ Dropzone.options.myDropzone = {
   url: '/',
 
   paramName: "image",
+  autoProcessQueue: false, // Disable Dropzone's automatic upload
   method: 'post',
   maxFiles: 1,
   addRemoveLinks: true,
   dictDefaultMessage: "Click here to upload a selfie",
   acceptedFiles: "image/*",
-  maxFilesize: 10,
-  resizeWidth: null,
-  resizeHeight: null,
+  maxFilesize: 5,
 
   init: function () {
 
@@ -138,11 +148,11 @@ Dropzone.options.myDropzone = {
       });
 
       haltFunction();
-      
-      
+
+
       var intervalId = setInterval(function () {
-        if (data.fun_pass != "True" && data.fun_pass != "Cannot detect face" && data.fun_pass != "Similarity not found" ) {
-         
+        if (data.fun_pass != "True" && data.fun_pass != "Cannot detect face" && data.fun_pass != "Similarity not found") {
+
         }
 
         else {

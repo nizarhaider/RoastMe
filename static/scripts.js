@@ -121,210 +121,96 @@ Dropzone.options.myDropzone = {
     });
 
     this.on("success", function (file, response) {
-      const ajaxPromise = new Promise((resolve, reject) => {
 
-        formData = new FormData();
-        formData.append("image", file);
-        $.ajax({
-          url: "/", // the URL to handle the file upload
-          method: "POST",
-          data: formData,
-          processData: false,
-          contentType: false,
-          success: function (data) {
-            haltFunction();
-            if (data.fun_pass == "True") {
-              document.getElementById("comments-list").scrollIntoView();
-              var comments = data.comments;
-              comments = JSON.parse(comments);
-              comments = comments.map(comment => comment.replace("[", "").replace("]", "").replace("\u2019", "'"));
-              $("#comments-list").append("<br>");
-  
-              function typeComment(i, j) {
-                typing = true;
-                if (i < 5 && i < comments.length) {
-                  if (j < comments[i].length) {
-                    $('.blinking-cursor').remove();
-                    $("#comments-list").append(comments[i][j]);
-                    $("#comments-list").append("<span class='blinking-cursor'>' '</span>");
-                    var delay = Math.floor(Math.random() * 75) + 25;
-                    document.querySelector('.blinking-cursor').style.animationDelay = delay + 'ms';
-                    setTimeout(function () {
-                      typeComment(i, j + 1);
-                    }, delay);
-                  } else {
-                    $("#comments-list").append("<br>").append("<br>");
-                    typing_time = setTimeout(function () {
-                      typeComment(i + 1, 0);
-                    }, 500);
-                  }
-                }
-                typing = false;
-              }
-  
-              document.getElementById("comments-list").scrollIntoView();
-              typeComment(0, 0);
-  
-              $('frame').removeClass('hidden');
-              $("#user-img").attr("src", data.user_img);
-  
-            }
-            else if (data.fun_pass == "Cannot detect face") {
-              $("#comments-list").text("");
-              $("#toast-body").text("");
-              document.getElementById("comments-list").scrollIntoView();
-              comments = "Failed to detect face. Please try a different image";
-              $("#comments-list").append("<br>");
-              $("#comments").append(comments);
-              $("#toast-body").append(comments);
-  
-              $('.toast').toast('show');
-              setTimeout(function () {
-                $('.toast').toast('hide');
-              }, 5000);
-            }
-            else if (data.fun_pass == "Similarity not found") {
-              $("#comments-list").text("");
-              $("#toast-body").text("");
-              document.getElementById("comments-list").scrollIntoView();
-              comments = "Failed to find a match. Please try a different image";
-              $("#comments-list").append("<br>");
-              $("#comments").append(comments);
-              $("#toast-body").append(comments);
-  
-              $('.toast').toast('show');
-              setTimeout(function () {
-                $('.toast').toast('hide');
-              }, 5000);
-            }
-            else {
-  
-              $("#comments-list").text("");
-              $("#toast-body").text("");
-  
-              document.getElementById("comments-list").scrollIntoView();
-              comments = "That face giving me problems. Please try a different image"
-              $("#comments-list").append("<br>");
-              $("#comments-list").append(comments);
-              $("#toast-body").append(comments);
-  
-              $('.toast').toast('show');
-              setTimeout(function () {
-                $('.toast').toast('hide');
-              }, 5000);
-  
-            }
-          },
-          error: function (error) {
-            reject(error);
-          }
-        })
-      });
-
-      // let data = {}; // default value
-
-      // ajaxPromise.then((response) => {
-      //   data = response;
-      // });
-      
-          
-
-          
-
-      // var intervalId = setInterval(function () {
-
-      //     // clearInterval(intervalId);
-          
-          
-      //     // if (data.fun_pass == "True") {
-      //     //   document.getElementById("comments-list").scrollIntoView();
-      //     //   var comments = data.comments;
-      //     //   comments = JSON.parse(comments);
-      //     //   comments = comments.map(comment => comment.replace("[", "").replace("]", "").replace("\u2019", "'"));
-      //     //   $("#comments-list").append("<br>");
-
-      //     //   function typeComment(i, j) {
-      //     //     typing = true;
-      //     //     if (i < 5 && i < comments.length) {
-      //     //       if (j < comments[i].length) {
-      //     //         $('.blinking-cursor').remove();
-      //     //         $("#comments-list").append(comments[i][j]);
-      //     //         $("#comments-list").append("<span class='blinking-cursor'>' '</span>");
-      //     //         var delay = Math.floor(Math.random() * 75) + 25;
-      //     //         document.querySelector('.blinking-cursor').style.animationDelay = delay + 'ms';
-      //     //         setTimeout(function () {
-      //     //           typeComment(i, j + 1);
-      //     //         }, delay);
-      //     //       } else {
-      //     //         $("#comments-list").append("<br>").append("<br>");
-      //     //         typing_time = setTimeout(function () {
-      //     //           typeComment(i + 1, 0);
-      //     //         }, 500);
-      //     //       }
-      //     //     }
-      //     //     typing = false;
-      //     //   }
-
-      //     //   document.getElementById("comments-list").scrollIntoView();
-      //     //   typeComment(0, 0);
-
-      //     //   $('frame').removeClass('hidden');
-      //     //   $("#user-img").attr("src", data.user_img);
-
-      //     // }
-      //     // else if (data.fun_pass == "Cannot detect face") {
-      //     //   $("#comments-list").text("");
-      //     //   $("#toast-body").text("");
-      //     //   document.getElementById("comments-list").scrollIntoView();
-      //     //   comments = "Failed to detect face. Please try a different image";
-      //     //   $("#comments-list").append("<br>");
-      //     //   $("#comments").append(comments);
-      //     //   $("#toast-body").append(comments);
-
-      //     //   $('.toast').toast('show');
-      //     //   setTimeout(function () {
-      //     //     $('.toast').toast('hide');
-      //     //   }, 5000);
-      //     // }
-      //     // else if (data.fun_pass == "Similarity not found") {
-      //     //   $("#comments-list").text("");
-      //     //   $("#toast-body").text("");
-      //     //   document.getElementById("comments-list").scrollIntoView();
-      //     //   comments = "Failed to find a match. Please try a different image";
-      //     //   $("#comments-list").append("<br>");
-      //     //   $("#comments").append(comments);
-      //     //   $("#toast-body").append(comments);
-
-      //     //   $('.toast').toast('show');
-      //     //   setTimeout(function () {
-      //     //     $('.toast').toast('hide');
-      //     //   }, 5000);
-      //     // }
-      //     // else {
-
-      //     //   $("#comments-list").text("");
-      //     //   $("#toast-body").text("");
-
-      //     //   document.getElementById("comments-list").scrollIntoView();
-      //     //   comments = "That face giving me problems. Please try a different image"
-      //     //   $("#comments-list").append("<br>");
-      //     //   $("#comments-list").append(comments);
-      //     //   $("#toast-body").append(comments);
-
-      //     //   $('.toast').toast('show');
-      //     //   setTimeout(function () {
-      //     //     $('.toast').toast('hide');
-      //     //   }, 5000);
-
-      //     // }
-
-
+      console.log(response)
+      data = response;
         
+      haltFunction();
+      if (data.fun_pass == "True") {
+        document.getElementById("comments-list").scrollIntoView();
+        var comments = data.comments;
+        comments = JSON.parse(comments);
+        comments = comments.map(comment => comment.replace("[", "").replace("]", "").replace("\u2019", "'"));
+        $("#comments-list").append("<br>");
 
-      // }, 1000);
+        function typeComment(i, j) {
+          typing = true;
+          if (i < 5 && i < comments.length) {
+            if (j < comments[i].length) {
+              $('.blinking-cursor').remove();
+              $("#comments-list").append(comments[i][j]);
+              $("#comments-list").append("<span class='blinking-cursor'>' '</span>");
+              var delay = Math.floor(Math.random() * 75) + 25;
+              document.querySelector('.blinking-cursor').style.animationDelay = delay + 'ms';
+              setTimeout(function () {
+                typeComment(i, j + 1);
+              }, delay);
+            } else {
+              $("#comments-list").append("<br>").append("<br>");
+              typing_time = setTimeout(function () {
+                typeComment(i + 1, 0);
+              }, 500);
+            }
+          }
+          typing = false;
+        }
 
+        document.getElementById("comments-list").scrollIntoView();
+        typeComment(0, 0);
 
-    });
+        $('frame').removeClass('hidden');
+        $("#user-img").attr("src", data.user_img);
+
+      }
+      else if (data.fun_pass == "Cannot detect face") {
+        $("#comments-list").text("");
+        $("#toast-body").text("");
+        document.getElementById("comments-list").scrollIntoView();
+        comments = "Failed to detect face. Please try a different image";
+        $("#comments-list").append("<br>");
+        $("#comments").append(comments);
+        $("#toast-body").append(comments);
+
+        $('.toast').toast('show');
+        setTimeout(function () {
+          $('.toast').toast('hide');
+        }, 5000);
+      }
+      else if (data.fun_pass == "Similarity not found") {
+        $("#comments-list").text("");
+        $("#toast-body").text("");
+        document.getElementById("comments-list").scrollIntoView();
+        comments = "Failed to find a match. Please try a different image";
+        $("#comments-list").append("<br>");
+        $("#comments").append(comments);
+        $("#toast-body").append(comments);
+
+        $('.toast').toast('show');
+        setTimeout(function () {
+          $('.toast').toast('hide');
+        }, 5000);
+      }
+      else {
+
+        $("#comments-list").text("");
+        $("#toast-body").text("");
+
+        document.getElementById("comments-list").scrollIntoView();
+        comments = "That face giving me problems. Please try a different image"
+        $("#comments-list").append("<br>");
+        $("#comments-list").append(comments);
+        $("#toast-body").append(comments);
+
+        $('.toast').toast('show');
+        setTimeout(function () {
+          $('.toast').toast('hide');
+        }, 5000);
+
+      }
+          
+          
+        });
+      
+    }
 
   }
-}

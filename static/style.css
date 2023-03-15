@@ -197,3 +197,10 @@ button.btn-close {
     max-width: 75%;
     margin-left: -50px;
 }
+
+@media (max-width: 767.98px) {
+    .col-lg-2 img {
+      display: block;
+      margin: 0 auto;
+    }
+  }

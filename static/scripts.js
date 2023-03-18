@@ -84,7 +84,7 @@ function startCommentPrinting() {
       }
       timeout = setTimeout(() => {
         promptInterval = setInterval(startPrinting, 100);
-      }, 3000);
+      }, 5000);
     }
   }
   promptInterval = setInterval(startPrinting, 25);

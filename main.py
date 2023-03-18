@@ -40,7 +40,7 @@ def home():
 def handle_form(): 
     basedir = os.path.abspath(os.path.dirname(__file__))
 
-    df= pd.read_csv('data_with_embeddings_fixed.csv')
+    df= pd.read_csv('combined.csv')
     df["embeddings"] = df["embeddings"].apply(lambda x: np.array(list(map(float, x.replace("[", "").replace("]", "").split()))))
     base_image =  os.path.join("static", "images")
     if 'image' not in request.files:

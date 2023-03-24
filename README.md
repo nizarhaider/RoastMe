@@ -9,7 +9,8 @@ RoastMe is a Flask application that utilizes machine learning to generate roasts
 - Continuous Deployment through Google Cloud Build and Google Container Registry
 
 
-Check this out at subroast.me
+View deployed version [here](https://subroast.me)
+
 ## Usage
 
 1. Clone the repository

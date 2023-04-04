@@ -1,0 +1,51 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy container app to Azure Web App - RoastMeai
+
+on:
+  push:
+    branches:
+      - prod
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to registry
+      uses: docker/login-action@v1
+      with:
+        registry: https://mcr.microsoft.com/
+        username: ${{ secrets.AzureAppService_ContainerUsername_635f637356c7418da8f08340caf0c6e2 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_8b6b4792f39b4157814fcf34c60d06b8 }}
+
+    - name: Build and push container image to registry
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_635f637356c7418da8f08340caf0c6e2 }}/appsvc/staticsite:${{ github.sha }}
+        file: ./Dockerfile
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'RoastMeai'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_45858e7f9dd64f9eb86f7f93da3712de }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_635f637356c7418da8f08340caf0c6e2 }}/appsvc/staticsite:${{ github.sha }}'

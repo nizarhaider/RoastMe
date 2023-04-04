@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_635f637356c7418da8f08340caf0c6e2 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_8b6b4792f39b4157814fcf34c60d06b8 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_1c9298bfd937495db022b2c029d0421b }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_967d872f5b34494290fb41c2607da1fe }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_635f637356c7418da8f08340caf0c6e2 }}/appsvc/staticsite:${{ github.sha }}
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_1c9298bfd937495db022b2c029d0421b }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'RoastMeai'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_45858e7f9dd64f9eb86f7f93da3712de }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_635f637356c7418da8f08340caf0c6e2 }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_bd86a650704b45e68d177f2cae86df13 }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_1c9298bfd937495db022b2c029d0421b }}/appsvc/staticsite:${{ github.sha }}'

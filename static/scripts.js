@@ -98,7 +98,7 @@ Dropzone.options.myDropzone = {
   method: 'post',
   maxFiles: 1,
   addRemoveLinks: true,
-  dictDefaultMessage: "Click here to upload a selfie",
+  dictDefaultMessage: "Capture or upload a selfie to get roasted",
   acceptedFiles: "image/*",
   maxFilesize: 10,
 

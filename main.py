@@ -31,10 +31,10 @@ def index():
 
     return render_template('index.html')
 
-@app.route('/landing')
-def home():
+@app.route('/privacy')
+def privacy():
 
-    return render_template('landing_page.html')
+    return render_template('privacy.html')
 
 @app.route('/', methods=['POST'])
 def handle_form(): 

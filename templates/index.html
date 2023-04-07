@@ -1,85 +1,99 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4431721269722337"
-     crossorigin="anonymous"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7PQRHWGLGE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-7PQRHWGLGE');
-    </script>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
-    <!-- Bootstrap CSS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https:1//cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="static/style.css" rel="stylesheet">
-    <!--Google Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Righteous&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@500&family=Righteous&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@500;700&family=Righteous&display=swap" rel="stylesheet">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4431721269722337"
+    crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7PQRHWGLGE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-    <!-- Include the Dropzone.js library -->
-    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
+    gtag('config', 'G-7PQRHWGLGE');
+  </script>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+  <!-- Bootstrap CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https:1//cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="static/style.css" rel="stylesheet">
+  <!--Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Righteous&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@500&family=Righteous&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Poppins:wght@500;700&family=Righteous&display=swap"
+    rel="stylesheet">
 
-    <!-- Loading.js library-->
-    <link rel="stylesheet" type="text/css" href="static/loading-bar.css"/>
-    <script type="text/javascript" src="static/loading-bar.js"></script>
+  <!-- Include the Dropzone.js library -->
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
+  <!-- Loading.js library-->
+  <link rel="stylesheet" type="text/css" href="static/loading-bar.css" />
+  <script type="text/javascript" src="static/loading-bar.js"></script>
 
 
-    
+
   <title>RoastMe</title>
 
-  </head>
-    <body class="bg-custom text-white">
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark" style="padding-right: 50px;">
-        <img class="header-img" src="static/roastme.gif" href="/" alt="reddit logo with burning eyes" style="margin-top: -15px; margin-bottom: -8px; height: 90px;" />
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/privacy">Privacy Policy</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+</head>
 
-
-      <div class="container">
-        <div class="toast align-items-center bg-warning text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="d-flex">
-            <div class="toast-body" id="toast-body">
-            </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-          </div>
-        </div>
-        <!-- <p class="text-center" style="font-size: 20px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 50px; margin-bottom: 50px;">
-        Capture or upload a selfie to get roasted 😈
-      </p> -->
-      <div class="my-5 d-flex justify-content-center align-items-center">
-        <form  class="dropzone " id="myDropzone" enctype="multipart/form-data">
-          <div class="fallback">
-            <input name="image" type="file" />
-          </div>
-        </form>
+<body class="bg-custom text-white">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="padding-right: 50px;">
+      <img class="header-img" src="static/roastme.gif" href="/index.html" alt="reddit logo with burning eyes"
+        style="margin-top: -15px; margin-bottom: -8px; height: 90px;" />
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/privacy">Privacy Policy</a>
+          </li>
+        </ul>
       </div>
+    </nav>
+  </header>
 
-      <div class="my-5">
+
+  <div class="container">
+    <div class="toast align-items-center bg-warning text-white border-0" role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toast-body">
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+          aria-label="Close"></button>
+      </div>
+    </div>
+
+    <div class="my-5 d-flex justify-content-center align-items-center">
+      <form class="dropzone " id="myDropzone" enctype="multipart/form-data">
+        <div class="fallback">
+          <input name="image" type="file" />
+        </div>
+      </form>
+    </div>
+
+    <div class="my-5">
       <div class="comments-container" id="comments-container">
         <div class="tools">
           <div class="circle">
@@ -97,63 +111,92 @@
           <h3>> </h3>
         </div>
 
-        <div id="comments-body" class="comments-body" >
+        <div id="comments-body" class="comments-body">
 
           <br>
 
-          <div >
+          <div>
             <div class="container">
               <div class="row align-items-center">
                 <div class="col-lg-2 offset-lg-0 offset-md-5 offset-sm-3">
-                  <img class="chat_icon mx-auto" alt="chat icon" id="chat_icon" src="static/chat_icon.png" style="max-width: 118px; min-width: 50px; display: none;"/>
+                  <img class="chat_icon mx-auto" alt="chat icon" id="chat_icon" src="static/chat_icon.png"
+                    style="max-width: 118px; min-width: 50px; display: none;" />
                 </div>
-                
-                
-                <div class="col-lg-9 col-md-12" id="comments-list" style="margin-right: 50px; padding-left: 20px;" >
+
+
+                <div class="col-lg-9 col-md-12" id="comments-list" style="margin-right: 50px; padding-left: 20px;">
                   <span class="blinking-cursor">" "</span>
                 </div>
               </div>
             </div>
-            
-      </div>  
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div style="margin-top: 300px;">
-    <!--Adding paragaph-->
-    <hr>
-    <span >
-      <h4 class="text-center" style="font-weight: 700; margin-bottom: 30px;">How it works</h4>
-      <!-- <h3 class="text-left">How it works</h3> -->
-        <h5 style="font-weight: 700;" >Data Collection 💻</h5>
-        <p class="text-left" style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
-        The first step in creating the roast bot was to collect data. The roast bot uses facial recognition technology to match users on the subreddit r/RoastMe with pre-existing comments from other users. To do this, a large database of comments was gathered from the subreddit r/RoastMe <br><br>
-        In addition, the roast bot uses computer vision techniques to extract facial embeddings from over 145,000 faces posted on the subreddit r/RoastMe. Facial embeddings are mathematical representations of the unique features of a face, which can be used to compare different faces and identify similarities.<br>
-</p>
+    <div class="text-center" id="show_match_img" style="margin-top: 100px;">
+        <a class="text-center" href="#" id="show_match_link" style="display:none; margin-bottom: 20px;">Show me my match</a>
+        <img src="" alt="match image" id="match_img" style="display: none;  width: 350px; margin: 0 auto; border-radius: 15px;">
+    </div>
+    <div style="margin-top: 150px;">
+      <!--Adding paragaph-->
+      <hr>
+      <span>
+        <h4 class="text-center" style="font-weight: 700; margin-bottom: 30px;">How it works</h4>
+        <!-- <h3 class="text-left">How it works</h3> -->
+        <h5 style="font-weight: 700;">Data Collection 💻</h5>
+        <p class="text-left"
+          style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
+          The first step in creating the roast bot was to collect data. The roast bot uses facial recognition technology
+          to match users on the subreddit r/RoastMe with pre-existing comments from other users. To do this, a large
+          database of comments was gathered from the subreddit r/RoastMe <br><br>
+          In addition, the roast bot uses computer vision techniques to extract facial embeddings from over 145,000
+          faces posted on the subreddit r/RoastMe. Facial embeddings are mathematical representations of the unique
+          features of a face, which can be used to compare different faces and identify similarities.<br>
+        </p>
         <h5 style="font-weight: 700;"">Facial Recognition 👨</h5>
-        <p class="text-left" style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
-        Once the facial embeddings are extracted, the roast bot matches them with the facial embeddings of users who submit photos on the subreddit. The closest match in the database is then used to extract pre-existing comments, which are printed out by the roast bot as a response to the user's submission.<br><br>
-        Facial recognition technology is used to compare the facial embeddings of the user who submitted a photo with the facial embeddings in the database. The algorithm calculates the similarity between the two sets of embeddings and identifies the closest match. Once a match is found, the corresponding pre-existing comments are extracted and used as a response.<br>
-</p>
-        <h5 style="font-weight: 700;">Comment Selection 🔬</h5>
-        <p class="text-left" style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
-        The roast bot's database contains over 0.5 million comments in total, which have been gathered from various sources. These comments are not generated by an NLP model, but rather are pre-existing comments made by other users on the subreddit r/RoastMe.<br><br>
-        The roast bot selects comments from the database based on the similarity of the facial embeddings. The comments are sorted in order of similarity, and the closest match is selected as the response.<br>
-</p>
-        <h5 style="font-weight: 700;">Response Generation 🧪</h5>
-              <p class="text-left" style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
+        <p class=" text-left"
+          style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
+          Once the facial embeddings are extracted, the roast bot matches them with the facial embeddings of users who
+          submit photos on the subreddit. The closest match in the database is then used to extract pre-existing
+          comments, which are printed out by the roast bot as a response to the user's submission.<br><br>
+          Facial recognition technology is used to compare the facial embeddings of the user who submitted a photo with
+          the facial embeddings in the database. The algorithm calculates the similarity between the two sets of
+          embeddings and identifies the closest match. Once a match is found, the corresponding pre-existing comments
+          are extracted and used as a response.<br>
+          </p>
+          <h5 style="font-weight: 700;">Comment Selection 🔬</h5>
+          <p class="text-left"
+            style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
+            The roast bot's database contains over 0.5 million comments in total, which have been gathered from various
+            sources. These comments are not generated by an NLP model, but rather are pre-existing comments made by
+            other users on the subreddit r/RoastMe.<br><br>
+            The roast bot selects comments from the database based on the similarity of the facial embeddings. The
+            comments are sorted in order of similarity, and the closest match is selected as the response.<br>
+          </p>
+          <h5 style="font-weight: 700;">Response Generation 🧪</h5>
+          <p class="text-left"
+            style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
 
-        Once a comment has been selected, the roast bot generates a response by printing out the pre-existing comment. The roast bot can generate amusing and entertaining responses to users on the subreddit, based on the pre-existing comments in its database.
-</p>
-        <h5 style="font-weight: 700;">Conclusion🏆</h5>
-              <p class="text-left" style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
+            Once a comment has been selected, the roast bot generates a response by printing out the pre-existing
+            comment. The roast bot can generate amusing and entertaining responses to users on the subreddit, based on
+            the pre-existing comments in its database.
+          </p>
+          <h5 style="font-weight: 700;">Conclusion🏆</h5>
+          <p class="text-left"
+            style="font-size: 15px; font-family: 'Open Sans', sans-serif; font-weight: 400; margin-top: 10px; margin-bottom: 30px;">
 
-        In conclusion, the roast bot uses facial recognition technology and a large database of pre-existing comments to generate amusing and entertaining responses to users on the subreddit r/RoastMe. The process involves collecting data, extracting facial embeddings, using facial recognition to match users, selecting comments, and generating responses. While the roast bot does not use an NLP model to generate comments, it is still able to generate humorous and entertaining responses to users on the subreddit.
-      </p>
-    </span>
+            In conclusion, the roast bot uses facial recognition technology and a large database of pre-existing
+            comments to generate amusing and entertaining responses to users on the subreddit r/RoastMe. The process
+            involves collecting data, extracting facial embeddings, using facial recognition to match users, selecting
+            comments, and generating responses. While the roast bot does not use an NLP model to generate comments, it
+            is still able to generate humorous and entertaining responses to users on the subreddit.
+          </p>
+      </span>
+    </div>
   </div>
-</div>
-  <footer style="background-color: #770a0a; color: #fff; text-align: center; padding: 10px; padding-top: 10px; width: 100%;">
+  <footer
+    style="background-color: #770a0a; color: #fff; text-align: center; padding: 10px; padding-top: 10px; width: 100%;">
     <div class="container">
       <div class="row new">
         <div class="col new">
@@ -164,5 +207,6 @@
   </footer>
 
   <script src="static/scripts.js"></script>
-    </body>
+</body>
+
 </html>

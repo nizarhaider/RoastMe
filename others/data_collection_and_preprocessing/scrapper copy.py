@@ -9,7 +9,7 @@ reddit = praw.Reddit(
     client_id="m_zO2sVNL0uFZ-5U2grDVg",
     client_secret="O11TNu-7b-obob1c_i7q2-3WeBfZag",
     username="2broke2code",
-    password="Fonseka12",
+    password=password,
     user_agent="android:com.2broke2code.roastbot:v1.2.1 (by u/2broke2code)",
 )
 

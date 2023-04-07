@@ -10,11 +10,11 @@ import concurrent.futures
 from tqdm import tqdm
 
 reddit = praw.Reddit(
-    client_id="m_zO2sVNL0uFZ-5U2grDVg",
-    client_secret="O11TNu-7b-obob1c_i7q2-3WeBfZag",
-    username="2broke2code",
-    password="Fonseka12",
-    user_agent="android:com.2broke2code.roastbot:v1.1.1 (by u/2broke2code)",
+    client_id=CLIENT_ID,
+    client_secret=CLIENT_SECRET,
+    username=USERNAME,
+    password=PASSWORD,
+    user_agent=USER_AGENT,
 )
 
 all_ids = []

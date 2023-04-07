@@ -129,9 +129,13 @@ Dropzone.options.myDropzone = {
       if (data.fun_pass == "True") {
         document.getElementById("comments-list").scrollIntoView();
         var comments = data.comments;
+        var match_path = data.match_img;
         comments = JSON.parse(comments);
         comments = comments.map(comment => comment.replace("[", "").replace("]", "").replace("\u2019", "'"));
         $("#comments-list").append("<br>");
+
+        const showMatchLink = document.querySelector("#show_match_link");
+        showMatchLink.style.display = "block";
 
         function typeComment(i, j) {
           typing = true;
@@ -161,6 +165,17 @@ Dropzone.options.myDropzone = {
         $('frame').removeClass('hidden');
         $("#user-img").attr("src", data.user_img);
 
+        
+        const matchImg = document.querySelector("#match_img");
+        showMatchLink.addEventListener("click", () => {
+          // Set the source of the image to the URL of the match image
+          matchImg.src = match_path;
+          // Display the image
+          
+          matchImg.style.display = "block";
+        });
+
+        
       }
       else if (data.fun_pass == "Cannot detect face") {
         $("#comments-list").text("");

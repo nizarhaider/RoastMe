@@ -66,8 +66,8 @@ def handle_form():
 
         comments, match_img = result
         comments = ast.literal_eval(comments)
-        match_img.save(os.path.join(base_image, "match.jpg"))
-        match_img_path = os.path.join(base_image, "match.jpg")
+        match_img.save(os.path.join("static","match.jpg"))
+        match_img_path = os.path.join("static", "match.jpg")
         # user_img_path = os.path.join('static/images', "user.jpg")
         comments=json.dumps(comments)
         response = {'comments': comments, 'match_img': match_img_path, 'user_img': user_img_path, "fun_pass": fun_pass}

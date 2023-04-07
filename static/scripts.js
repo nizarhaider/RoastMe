@@ -169,9 +169,8 @@ Dropzone.options.myDropzone = {
         const matchImg = document.querySelector("#match_img");
         showMatchLink.addEventListener("click", () => {
           // Set the source of the image to the URL of the match image
-          matchImg.src = match_path;
+          matchImg.src = "static/match.jpg";
           // Display the image
-          
           matchImg.style.display = "block";
         });
 

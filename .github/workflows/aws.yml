@@ -31,8 +31,8 @@ on:
     branches: [ "prod" ]
 
 env:
-  AWS_REGION: MY_AWS_REGION                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: MY_ECR_REPOSITORY           # set this to your Amazon ECR repository name
+  AWS_REGION: eu-north-1                   # set this to your preferred AWS region, e.g. us-west-1
+  ECR_REPOSITORY: roastme           # set this to your Amazon ECR repository name
   ECS_SERVICE: RoastMe                 # set this to your Amazon ECS service name
   ECS_CLUSTER: RoastMe                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: ./aws-roastme.json # set this to the path to your Amazon ECS task definition

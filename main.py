@@ -12,6 +12,11 @@ import imghdr
 app = Flask(__name__)
 # app.debug=True
 
+@app.route('/health')
+def health_check():
+
+    return "OK", 200
+
 @app.route('/')
 def index():
 

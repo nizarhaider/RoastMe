@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-# from google.cloud import storage
 import io
 import pandas as pd
 from model import find_closest_match 
@@ -11,14 +10,7 @@ import json
 import imghdr
 
 app = Flask(__name__)
-app.debug=True
-
-# # Load data
-# client = storage.Client()
-# bucket = client.get_bucket("roastbucket")
-# blob = bucket.get_blob("data_with_embeddings.csv")
-# data = blob.download_as_string()
-# df = pd.read_csv(io.StringIO(data.decode('utf-8')))
+# app.debug=True
 
 @app.route('/')
 def index():
@@ -75,4 +67,4 @@ def handle_form():
         return jsonify(response)
         
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=8080, threaded=True)

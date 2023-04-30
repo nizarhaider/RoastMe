@@ -13,10 +13,10 @@ COPY . ./
 
 # # Copy the current directory contents into the container at /app
 # COPY . /app
-RUN apt-get update && apt-get install libgl1 libglib2.0-0 libsm6 libxrender1 libxext6  libgtk2.0-dev -y
+# RUN apt-get update && apt-get install libgl1 libglib2.0-0 libsm6 libxrender1 libxext6  libgtk2.0-dev -y
 
 
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install -r requirements.txt
 RUN pip3 install gunicorn
 # # Set environment variable
 # ENV FLASK_APP=main.py
@@ -28,4 +28,4 @@ RUN pip3 install gunicorn
 # CMD ["flask", "run", "--host=0.0.0.0"]
 # RUN cd $APP_HOME
 
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app

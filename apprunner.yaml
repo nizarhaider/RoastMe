@@ -3,13 +3,11 @@ runtime: python3
 build:
   commands:
     build:        
-      - python -m venv myenv
-      - source myenv/bin/activate
       - pip install -r requirements.txt
 
 run:
   runtime-version: 3.8.5
-  command: source myenv/bin/activate && gunicorn app:app
+  command: gunicorn app:app
   network: 
     port: 5000
     env: PORT  

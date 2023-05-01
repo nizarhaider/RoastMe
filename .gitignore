@@ -10,3 +10,4 @@ __pycache__/model.cpython-38.pyc
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 *.pyc
+*.pyc

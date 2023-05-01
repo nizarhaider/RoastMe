@@ -11,3 +11,4 @@ __pycache__/model.cpython-38.pyc
 !.elasticbeanstalk/*.global.yml
 *.pyc
 *.pyc
+__pycache__/model.cpython-38.pyc

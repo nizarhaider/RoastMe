@@ -8,7 +8,7 @@ build:
       - pip install -r requirements.txt
 
 run:
-  runtime-version: 3.8.0
+  runtime-version: 3.8.5
   command: source myenv/bin/activate && gunicorn app:app
   network: 
     port: 5000

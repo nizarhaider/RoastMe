@@ -9,9 +9,9 @@ import ast
 import json
 import imghdr
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route('/')
+@application.route('/')
 def index():
 
     basedir = os.path.abspath(os.path.dirname(__file__))
@@ -23,18 +23,18 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/health')
+@application.route('/health')
 def health():
-    
+
     return jsonify({'status': 'ok'}), 200
 
-@app.route('/privacy')
+@application.route('/privacy')
 def privacy():
 
     return render_template('privacy.html')
 
 
-@app.route('/', methods=['POST'])
+@application.route('/', methods=['POST'])
 def handle_form(): 
     basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -74,4 +74,4 @@ def handle_form():
         return jsonify(response)
         
 if __name__ == '__main__':
-    app.run()
+    application.run()

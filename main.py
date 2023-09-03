@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import io
 import pandas as pd
-from model import find_closest_match 
+from model import find_closest_match
 import numpy as np
 import os
 import shutil

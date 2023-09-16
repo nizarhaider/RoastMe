@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "undefined/subscriptions/ca15ccc3-23d8-4a15-9679-ab7d3c24b94c/resourceGroups/RoastMeai_group/providers/Microsoft.Web/sites/roastmesomething",
-    "appService.deploySubpath": "."
-}

@@ -1,3 +1,0 @@
-runtime: python38
-env: flex
-entrypoint: gunicorn -b :$PORT main:app

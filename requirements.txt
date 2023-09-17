@@ -1,12 +1,10 @@
 ﻿opencv-python-headless
 urllib3
-pillow
-mtcnn 
+pillow 
 facenet_pytorch 
 numpy 
 torch
 scipy 
 flask 
 pandas   
-tensorflow-cpu
 gunicorn
